@@ -1,5 +1,6 @@
 ﻿using eTickets.Data;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eTickets.Models
 {
@@ -14,5 +15,17 @@ namespace eTickets.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public MovieCategory MovieCategory { get; set; }
+
+        // Relations 
+        public List<Actor_Movie> Actors_Movies { get; set; }
+
+        // Cinema 
+        public int CinemaId { get; set; }
+        [ForeignKey("CinemaId")] // not necessary
+        public Cinema Cinema { get; set; } 
+
+        // Producer
+        public int ProducerId { get; set; }
+        public Producer Producer { get; set; }
     }
 }

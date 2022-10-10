@@ -77,6 +77,10 @@ namespace eTickets.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteConfirmation(int id)
         {
+            var actor = await _service.GetByIdAsync(id);
+            if (actor == null)
+                return View("NotFound");
+
             await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }

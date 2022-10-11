@@ -39,7 +39,7 @@ namespace eTickets.Data.Base
             return await query.ToListAsync();
         }
 
-        public async Task<T?> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int id)
         {
             return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         }

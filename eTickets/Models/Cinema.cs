@@ -19,6 +19,6 @@ namespace eTickets.Models
         public string Description { get; set; }
 
         // Relations
-        public List<Movie>? Movies { get; set; }
+        public List<Movie> Movies { get; set; }
     }
 }

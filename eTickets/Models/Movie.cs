@@ -18,7 +18,7 @@ namespace eTickets.Models
         public MovieCategory MovieCategory { get; set; }
 
         // Relations 
-        public List<Actor_Movie>? Actors_Movies { get; set; }
+        public List<Actor_Movie> Actors_Movies { get; set; }
 
         // Cinema 
         public int CinemaId { get; set; }

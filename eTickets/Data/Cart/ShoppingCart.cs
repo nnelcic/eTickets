@@ -79,10 +79,13 @@ namespace eTickets.Data.Cart
 
         public async Task ClearShoppingCartAsync()
         {
-            var items = await _context.ShoppingCartItems.Where(x => x.ShoppingCartId == ShoppingCartId)
+            var items = await _context.ShoppingCartItems
+                .Where(x => x.ShoppingCartId == ShoppingCartId)
                 .ToListAsync();
             _context.ShoppingCartItems.RemoveRange(items);
             await _context.SaveChangesAsync();
+
+            ShoppingCartItems = new List<ShoppingCartItem>();
         }
     }
 }

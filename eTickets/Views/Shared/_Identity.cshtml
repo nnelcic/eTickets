@@ -9,7 +9,7 @@
 
 	<a class="btn btn-outline-primary my-2 my-sm-0 me-2"
    asp-controller="Account" asp-action="Register">
-		<i class="bi bi-person-plus"></i> Register
+		<i class="bi bi-person-plus"></i> Register	
 	</a>
 }
 else
@@ -25,6 +25,16 @@ else
 					<i class="bi bi-list"></i> Orders
 				</a>
 			</li>
+
+			@if (User.Identity.IsAuthenticated && User.IsInRole(UserRoles.Admin))
+			{
+				<li>
+					<a class="dropdown-item" asp-controller="Account" asp-action="Users">
+						<i class="bi bi-people"></i> Users
+					</a>
+				</li>
+			} 
+
 		</ul>
 	</div>
 

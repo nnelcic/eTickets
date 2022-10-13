@@ -27,18 +27,21 @@
                             </a>
                         </li>
 
-                        <li class="navbar-nav">
-                            <div class="dropdown">
-                              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-gear"></i> Management
-                              </button>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-controller="Cinemas" asp-action="Index"><i class="bi bi-camera-reels"></i>Cinemas</a></li>
-                                <li><a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i>Producers</a></li>
-                                <li><a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i>Actors</a></li>
-                              </ul>
-                            </div>
-                        </li>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole(UserRoles.Admin))
+                        {
+                            <li class="navbar-nav">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-gear"></i> Management
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" asp-controller="Cinemas" asp-action="Index"><i class="bi bi-camera-reels"></i>Cinemas</a></li>
+                                        <li><a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i>Producers</a></li>
+                                        <li><a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i>Actors</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        }
                     </ul>
 
                     <form class="form-inline my-2 my-lg-0 d-flex" asp-controller="Movies" asp-action="Filter" style="padding-right: 25px;">
